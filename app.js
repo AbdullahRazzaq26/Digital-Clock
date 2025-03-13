@@ -1,4 +1,5 @@
 function updateClock() {
+    var fullDate = document.getElementById("fullDate");
     var clock = document.getElementById("clock");
     var today = new Date();
     var year = today.getFullYear();
@@ -14,18 +15,9 @@ function updateClock() {
     var minutes = today.getMinutes();
     var seconds = today.getSeconds();
 
-    if (hours >= 12) {
-        ampm = "PM"
-
-    } else {
-        ampm = "AM"
-    }
-    if (hours > 12) {
-        hours = hours - 12
-    }
-    if (hours = 0) {
-        hours = 12
-    }
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
     clock.innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm
     fullDate.innerText = year + " " + day + " " + months[month - 1] + " " + date;
@@ -33,3 +25,4 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
+
